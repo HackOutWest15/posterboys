@@ -4,23 +4,26 @@
       <header class="walkthrough row">
         <div
           class="col-xs-4 walkthrough-btn walkthrough-btn-active"
-          ng-click="main.step = main.STEP_CREATE">
+          ng-click="main.step = main.STEP_CREATE"
+          ng-class="{'walkthrough-btn-active': main.step === main.STEP_CREATE}">
           <span><i class="fa fa-music"></i> Pick song</span>
         </div>
         <div
           class="col-xs-4 walkthrough-btn"
-          ng-click="main.step = main.STEP_CUSTOMIZE">
+          ng-click="main.step = main.STEP_CUSTOMIZE"
+          ng-class="{'walkthrough-btn-active': main.step === main.STEP_CUSTOMIZE}">
           <span><i class="fa fa-pencil"></i> Customize</span>
         </div>
         <div
           class="col-xs-4 walkthrough-btn"
-          ng-click="main.step = main.STEP_SAVE">
+          ng-click="main.step = main.STEP_SAVE"
+          ng-class="{'walkthrough-btn-active': main.step === main.STEP_SAVE}">
           <span><i class="fa fa-pencil"></i> Save & share</span>
         </div>
       </header>
       <div ng-switch="main.step">
         <div ng-switch-when="0">
-          <h1 class="controls-headline">Generate your wallpaper</h1>
+          <h1 class="controls-headline">Generate your card</h1>
           <form ng-submit="main.getInfo(main.trackId)">
             <div class="input-group">
               <input
@@ -35,30 +38,58 @@
               </span>
             </div>
           </form>
-          <h2 class="controls-subline">...or try some of the best songs</h2>
+          <h2 class="controls-subline">...or try some popular songs</h2>
           <ul class="controls-favourites">
             <li
               class="controls-favourite"
-              ng-click="main.getInfo('7zQXlpaBniXYrmDfiCzI9t')">
-              Håkan Hellström – Kom igen Lena!
+              ng-click="main.getInfo('3SjXx3rbNGk8nCho8YEoz5', 6)">
+              Håkan Hellström – Det kommer aldrig va över för mig
             </li>
             <li
               class="controls-favourite"
-              ng-click="main.getInfo('11DtRXljoN4MNboh11PIev')">
-              Oskar Linnros – Ack, Sundbyberg
+              ng-click="main.getInfo('5T8EDUDqKcs6OSOwEsfqG7', 9)">
+              Queen – Don't Stop Me Now
             </li>
             <li
               class="controls-favourite"
-              ng-click="main.getInfo('5T8EDUDqKcs6OSOwEsfqG7')">
-              Queen – Don't stop me now
+              ng-click="main.getInfo('5ifJBfmaH05XbEiwWSQLNj', 1)">
+              N.W.A. – Straight Outta Compton
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('1tjHKKI0r82IB5KL29whHs', 6)">
+              Muse – Panic Station
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('69kOkLUCkxIZYexIgSG8rq', 1)">
+              Daft Punk – Get Lucky
             </li>
           </ul>
         </div>
         <div ng-switch-when="1">
-          Customize
+          <h1 class="controls-headline">Customize your card</h1>
+          <label for="lyric-slider">
+            <input
+              name="lyric-slider"
+              type="range"
+              ng-model="main.poster.fontSize"
+              min="2"
+              max="6"/> Lyrics size
+          </label>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="main.poster.showArtist"> Show artist name
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="main.poster.showTitle"> Show song title
+            </label>
+          </div>
         </div>
         <div ng-switch-when="2">
-          Save
+          <h1 class="controls-headline">Save and share your card</h1>
         </div>
       </div>
       <div class="quote-controls" ng-if="main.poster.lyrics.length > 1">
@@ -81,6 +112,11 @@
     </div>
     <div class="col-md-8 preview">
       <ng-include src="'views/templates/quote.html'" class="template-quote"></ng-include>
+    </div>
+  </div>
+  <div class="loader" ng-if="main.isLoading">
+    <div class="loader-spinner">
+      <div></div>
     </div>
   </div>
 </div>

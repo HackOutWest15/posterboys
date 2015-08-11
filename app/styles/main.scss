@@ -14,6 +14,11 @@ body,
   height: 100%;
 }
 
+body.lock
+{
+  overflow: hidden !important;
+}
+
 body,
 .container {
   margin: 0;
@@ -101,7 +106,7 @@ body,
 .walkthrough-btn
 {
   text-align: center;
-  opacity: 0.7;
+  opacity: 0.55;
   height: 100%;
   cursor: pointer;
 
@@ -143,6 +148,7 @@ body,
   {
     color: #fff;
     background: darken($primary, 14);
+    border: 0;
   }
 
   &:focus,
@@ -203,3 +209,4 @@ body,
 }
 
 @import "quote";
+@import "loader";

@@ -8,7 +8,7 @@
  * Controller of the posterboyApp
  */
 angular.module('posterboyApp')
-  .controller('MainCtrl', function (MusixService, Spotify, echonestApiService) {
+  .controller('MainCtrl', function ($q, MusixService, Spotify, echonestApiService) {
     var ctrl = this;
 
     ctrl.STEP_CREATE = 0;
@@ -16,6 +16,7 @@ angular.module('posterboyApp')
     ctrl.STEP_SAVE = 2;
 
     ctrl.step = 0;
+    ctrl.isLoading = false;
 
     // Default poster vars
     ctrl.poster = {
@@ -23,7 +24,10 @@ angular.module('posterboyApp')
       quoteIndex: 0, // index of array to pick quote line
       artist: 'Kanye West',
       track: 'Monster',
-      artistImageUrl: 'http://uptownmagazine.com/files/2015/01/People-Kanye_West.jpg'
+      artistImageUrl: 'http://uptownmagazine.com/files/2015/01/People-Kanye_West.jpg',
+      showArtist: true,
+      showTitle: true,
+      fontSize: 4
     };
 
     // Quotes poster controls
@@ -45,38 +49,62 @@ angular.module('posterboyApp')
         console.log(imageUrl);
         ctrl.poster.artistImageUrl = imageUrl;
       });
-    }
+    };
 
-    ctrl.getInfo = function (trackId) {
+    ctrl.loadingPoster = {};
+
+    ctrl.getInfo = function (trackId, preset) {
+
+      ctrl.isLoading = true;
 
       /* Get track ID from URI or link (or none) */
       trackId = trackId.split(':').slice(-1)[0].split('/').slice(-1)[0];
 
-      /* Get track artist and name */
-      Spotify.getTrack(trackId).then(function(response) {
-        ctrl.poster.track = response.name;
-        ctrl.poster.artist = response.artists[0].name;
-        ctrl.poster.artistId = response.artists[0].id;
-        /* Get image from Echonest */
-        echonestApiService.getRandomArtistImage(ctrl.poster.artistId).then(function(imageUrl) {
-          ctrl.poster.artistImageUrl = imageUrl;
-        });
-      });
+      /* Create track artist, name and musixId promises */
+      var trackInfoPromise = Spotify.getTrack(trackId);
+      var musixIdPromise = MusixService.getMusixId(trackId);
 
-      /* Get lyrics */
-      MusixService.getMusixId(trackId).then(function(response) {
+      /* Run promises and wait for all */
+      $q.all([trackInfoPromise, musixIdPromise]).then(function(response) {
+        ctrl.loadingPoster.track = response[0].name;
+        ctrl.loadingPoster.artist = response[0].artists[0].name;
+        ctrl.loadingPoster.artistId = response[0].artists[0].id;
 
-        if(response && response.data && response.data.response && response.data.response.songs) {
-          var musixId = response.data.response.songs[0].foreign_ids[0].foreign_id.split(':').slice(-1)[0];
-          MusixService.getLyrics(musixId).then(function(response) {
-            if(response && response.data && response.data.message && response.data.message.body
-              && response.data.message.body.lyrics) {
-                ctrl.poster.lyrics = response.data.message.body.lyrics.lyrics_body.match(/[^\r\n]+/g);
-              } else {
-                console.log('error'); // TODO: BETTER ERROR HANDLING
-              }
-          });
+        /* Create Echonest image promise */
+        var echoImgPromise = echonestApiService.getRandomArtistImage(ctrl.loadingPoster.artistId);
+        var lyricsPromise;
+
+        if(response[1] && response[1].data && response[1].data.response && response[1].data.response.songs) {
+          var musixId = response[1].data.response.songs[0].foreign_ids[0].foreign_id.split(':').slice(-1)[0];
+
+          /* Create lyrics promise */
+          lyricsPromise = MusixService.getLyrics(musixId);
         }
+
+        $q.all([echoImgPromise, lyricsPromise]).then(function(response) {
+          ctrl.loadingPoster.artistImageUrl = response[0];
+
+          if(response[1] && response[1].data && response[1].data.message && response[1].data.message.body
+            && response[1].data.message.body.lyrics) {
+              ctrl.loadingPoster.lyrics = response[1].data.message.body.lyrics.lyrics_body.match(/[^\r\n]+/g);
+            } else {
+              console.log('error'); // TODO: BETTER ERROR HANDLING
+            }
+
+          ctrl.poster.track = ctrl.loadingPoster.track;
+          ctrl.poster.artist = ctrl.loadingPoster.artist;
+          ctrl.poster.artistId = ctrl.loadingPoster.artistId;
+          ctrl.poster.artistImageUrl = ctrl.loadingPoster.artistImageUrl;
+          ctrl.poster.lyrics = ctrl.loadingPoster.lyrics;
+
+          if(preset) {
+            ctrl.poster.quoteIndex = preset;
+          } else {
+            ctrl.poster.quoteIndex = 0;
+          }
+
+          ctrl.isLoading = false;
+        });
       });
     };
 

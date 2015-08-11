@@ -4,14 +4,18 @@
   <div class="quote-tint">
     <div class="quote-border">
       <div class="quote-content">
-        <h1 class="quote-content-quote">
+        <h1 class="quote-content-quote" style="font-size: {{main.poster.fontSize}}em">
           "{{ main.poster.lyrics[main.poster.quoteIndex] }}"
         </h1>
-        <h2 class="quote-content-name">
+        <h2 class="quote-content-name" ng-if="main.poster.showArtist || main.poster.showTitle">
           <span class="quote-content-name-borders">
-          {{ main.poster.artist }}
-          <span class="quote-diamond">&diams;</span>
-          <em>{{ main.poster.track }}</em>
+            {{ main.poster.showArtist ? main.poster.artist : '' }}
+            <span class="quote-diamond" ng-if="main.poster.showArtist && main.poster.showTitle">
+              &diams;
+            </span>
+            <em ng-if="main.poster.showTitle">
+              {{ main.poster.track }}
+            </em>
           </span>
         </h2>
     </div>
