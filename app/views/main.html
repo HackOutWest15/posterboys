@@ -1,11 +1,14 @@
-<div class="container">
+<div class="container" ng-controller="MainCtrl as main">
   <div class="row">
     <div class="col-md-6 input">
-      Input area (type song here, customize etc i guess)
+      <form ng-submit="main.generatePoster()">
+        Enter song
+        <input type="text" ng-model="text" name="text" />
+        <input type="submit" id="submit" value="Submit" />
+      </form>
     </div>
     <div class="col-md-6 preview">
-      Preview area
-      {{ awesomeThings }}
+      Preview area {{ main.things }}
     </div>
   </div>
 </div>
