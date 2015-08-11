@@ -8,11 +8,8 @@
  * Controller of the posterboyApp
  */
 angular.module('posterboyApp')
-  .controller('MainCtrl', function (MusixService, Spotify) {
-
+  .controller('MainCtrl', function (MusixService, Spotify, flickrApiService) {
     var ctrl = this;
-
-    ctrl.things = ['lol', 'boll', 'hej'];
 
     // Default poster vars
     ctrl.poster = {
@@ -36,6 +33,12 @@ angular.module('posterboyApp')
         ctrl.poster.quoteIndex = ctrl.poster.quoteIndex - 1;
       }
     };
+
+    ctrl.changeImage = function() {
+      flickrApiService.getRandomLargePhoto(ctrl.poster.artist).then(function(imageUrl) {
+        ctrl.poster.artistImageUrl = imageUrl;
+      });
+    }
 
     ctrl.getInfo = function (trackId) {
 
@@ -67,6 +70,10 @@ angular.module('posterboyApp')
         }
       });
 
+      /* Get image from Flickr */
+      flickrApiService.getRandomLargePhoto(ctrl.poster.artist).then(function(imageUrl) {
+        ctrl.poster.artistImageUrl = imageUrl;
+      });
 
     };
 
