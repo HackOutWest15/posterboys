@@ -2,49 +2,65 @@
   <div class="row">
     <div class="col-md-4 controls">
       <header class="walkthrough row">
-        <div class="col-xs-4 walkthrough-btn walkthrough-btn-active">
+        <div
+          class="col-xs-4 walkthrough-btn walkthrough-btn-active"
+          ng-click="main.step = main.STEP_CREATE">
           <span><i class="fa fa-music"></i> Pick song</span>
         </div>
-        <div class="col-xs-4 walkthrough-btn">
+        <div
+          class="col-xs-4 walkthrough-btn"
+          ng-click="main.step = main.STEP_CUSTOMIZE">
           <span><i class="fa fa-pencil"></i> Customize</span>
         </div>
-        <div class="col-xs-4 walkthrough-btn">
+        <div
+          class="col-xs-4 walkthrough-btn"
+          ng-click="main.step = main.STEP_SAVE">
           <span><i class="fa fa-pencil"></i> Save & share</span>
         </div>
       </header>
-      <h1 class="controls-headline">Generate your wallpaper</h1>
-      <form ng-submit="main.getInfo(main.trackId)">
-        <div class="input-group">
-          <input
-            class="form-control controls-input"
-            type="text"
-            ng-model="main.trackId"
-            placeholder="Paste a Spotify URL" />
-          <span class="input-group-btn">
-            <button class="btn btn-default controls-submit" type="submit">
-              Create
-            </button>
-          </span>
+      <div ng-switch="main.step">
+        <div ng-switch-when="0">
+          <h1 class="controls-headline">Generate your wallpaper</h1>
+          <form ng-submit="main.getInfo(main.trackId)">
+            <div class="input-group">
+              <input
+                class="form-control controls-input"
+                type="text"
+                ng-model="main.trackId"
+                placeholder="Paste a Spotify URL" />
+              <span class="input-group-btn">
+                <button class="btn btn-default controls-submit" type="submit">
+                  Create
+                </button>
+              </span>
+            </div>
+          </form>
+          <h2 class="controls-subline">...or try some of the best songs</h2>
+          <ul class="controls-favourites">
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('7zQXlpaBniXYrmDfiCzI9t')">
+              Håkan Hellström – Kom igen Lena!
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('11DtRXljoN4MNboh11PIev')">
+              Oskar Linnros – Ack, Sundbyberg
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('5T8EDUDqKcs6OSOwEsfqG7')">
+              Queen – Don't stop me now
+            </li>
+          </ul>
         </div>
-      </form>
-      <h2 class="controls-subline">...or try some of the best songs</h2>
-      <ul class="controls-favourites">
-        <li
-          class="controls-favourite"
-          ng-click="main.getInfo('7zQXlpaBniXYrmDfiCzI9t')">
-          Håkan Hellström – Kom igen Lena!
-        </li>
-        <li
-          class="controls-favourite"
-          ng-click="main.getInfo('11DtRXljoN4MNboh11PIev')">
-          Oskar Linnros – Ack, Sundbyberg
-        </li>
-        <li
-          class="controls-favourite"
-          ng-click="main.getInfo('5T8EDUDqKcs6OSOwEsfqG7')">
-          Queen – Don't stop me now
-        </li>
-      </ul>
+        <div ng-switch-when="1">
+          Customize
+        </div>
+        <div ng-switch-when="2">
+          Save
+        </div>
+      </div>
       <div class="quote-controls" ng-if="main.poster.lyrics.length > 1">
         <button
           class="controls-btn"

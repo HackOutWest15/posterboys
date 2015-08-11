@@ -11,6 +11,12 @@ angular.module('posterboyApp')
   .controller('MainCtrl', function (MusixService, Spotify, echonestApiService) {
     var ctrl = this;
 
+    ctrl.STEP_CREATE = 0;
+    ctrl.STEP_CUSTOMIZE = 1;
+    ctrl.STEP_SAVE = 2;
+
+    ctrl.step = 0;
+
     // Default poster vars
     ctrl.poster = {
       lyrics: ['I’m living the future so the present is my past'], // i'm thinking an array of lyrics lines?
@@ -51,7 +57,10 @@ angular.module('posterboyApp')
         ctrl.poster.track = response.name;
         ctrl.poster.artist = response.artists[0].name;
         ctrl.poster.artistId = response.artists[0].id;
-        ctrl.poster.artistImageUrl = response.album.images[0].url;
+        /* Get image from Echonest */
+        echonestApiService.getRandomArtistImage(ctrl.poster.artistId).then(function(imageUrl) {
+          ctrl.poster.artistImageUrl = imageUrl;
+        });
       });
 
       /* Get lyrics */
@@ -63,18 +72,11 @@ angular.module('posterboyApp')
             if(response && response.data && response.data.message && response.data.message.body
               && response.data.message.body.lyrics) {
                 ctrl.poster.lyrics = response.data.message.body.lyrics.lyrics_body.match(/[^\r\n]+/g);
-                console.log(ctrl.poster.lyrics);
               } else {
                 console.log('error'); // TODO: BETTER ERROR HANDLING
               }
           });
         }
-      });
-
-      /* Get image from Echonest */
-      echonestApiService.getRandomArtistImage(ctrl.poster.artistId).then(function(imageUrl) {
-        console.log(imageUrl);
-        ctrl.poster.artistImageUrl = imageUrl;
       });
     };
 
