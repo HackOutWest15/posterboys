@@ -8,11 +8,8 @@
  * Controller of the posterboyApp
  */
 angular.module('posterboyApp')
-  .controller('MainCtrl', function (MusixService, Spotify) {
-
+  .controller('MainCtrl', function (MusixService, Spotify, echonestApiService) {
     var ctrl = this;
-
-    ctrl.things = ['lol', 'boll', 'hej'];
 
     // Default poster vars
     ctrl.poster = {
@@ -37,22 +34,29 @@ angular.module('posterboyApp')
       }
     };
 
+    ctrl.changeImage = function() {
+      echonestApiService.getRandomArtistImage(ctrl.poster.artistId).then(function(imageUrl) {
+        console.log(imageUrl);
+        ctrl.poster.artistImageUrl = imageUrl;
+      });
+    }
+
     ctrl.getInfo = function (trackId) {
 
       /* Get track ID from URI or link (or none) */
       trackId = trackId.split(':').slice(-1)[0].split('/').slice(-1)[0];
-      console.log(trackId);
 
       /* Get track artist and name */
       Spotify.getTrack(trackId).then(function(response) {
-        console.log(response);
         ctrl.poster.track = response.name;
         ctrl.poster.artist = response.artists[0].name;
+        ctrl.poster.artistId = response.artists[0].id;
         ctrl.poster.artistImageUrl = response.album.images[0].url;
       });
 
       /* Get lyrics */
       MusixService.getMusixId(trackId).then(function(response) {
+
         if(response && response.data && response.data.response && response.data.response.songs) {
           var musixId = response.data.response.songs[0].foreign_ids[0].foreign_id.split(':').slice(-1)[0];
           MusixService.getLyrics(musixId).then(function(response) {
@@ -67,7 +71,11 @@ angular.module('posterboyApp')
         }
       });
 
-
+      /* Get image from Echonest */
+      echonestApiService.getRandomArtistImage(ctrl.poster.artistId).then(function(imageUrl) {
+        console.log(imageUrl);
+        ctrl.poster.artistImageUrl = imageUrl;
+      });
     };
 
   });
