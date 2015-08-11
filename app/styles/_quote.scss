@@ -1,61 +1,78 @@
-.template-body {
-  background: url('http://uptownmagazine.com/files/2015/01/People-Kanye_West.jpg') no-repeat center center fixed;
+.quote-template-body {
+  background: no-repeat center center fixed;
   background-size: cover;
   margin: 0;
   padding: 0;
   font-size: 12px;
   width: 100%;
+
+  &:hover
+  {
+    .content-quote-controls
+    {
+      button
+      {
+        opacity: 0.5;
+
+        &:hover
+        {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
-.diamond
+.quote-diamond
 {
   margin-left: 5px;
   margin-right: 5px;
 }
 
-.tint {
+.quote-tint {
   width: 100%;
   height: 100%;
   padding: 15px;
   background: rgba(0, 0, 0, 0.65);
 }
 
-.border {
+.quote-border {
   width: 100%;
   height: 100%;
   border: 3px solid #fff;
   display: table;
 }
 
-.content {
+.quote-content {
   color: #fff;
   text-align: center;
   width: 100%;
   height: 100%;
   display: table-cell;
   vertical-align: middle;
+  padding: 15px;
 }
 
-.content-quote,
-.content-name {
+.quote-content-quote,
+.quote-content-name {
   width: 100%;
 }
 
-.content-quote {
+.quote-content-quote {
   font-size: 4em;
   text-transform: uppercase;
   font-family: 'Oswald', sans-serif;
   margin-bottom: 0;
 }
 
-.content-name {
+.quote-content-name {
   font-size: 1.5em;
   text-transform: uppercase;
   font-family: 'Oswald', sans-serif;
   font-weight: 300;
 }
 
-.content-name-borders {
+.quote-content-name-borders {
   display: inline-block;
   position: relative;
 
@@ -64,10 +81,10 @@
     content: "";
     position: absolute;
     height: 3px;
-    border-bottom: 2px solid white;
-    border-top: 2px solid white;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
     top: 8px;
-    width: 100px;
+    width: 40%; //CHANGE THIS IN BREAKPOINTS
   }
 
   &::before {

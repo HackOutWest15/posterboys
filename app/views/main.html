@@ -1,14 +1,18 @@
 <div class="container" ng-controller="MainCtrl as main">
   <div class="row">
     <div class="col-md-6 input">
-      <form ng-submit="main.generatePoster()">
-        Enter song
-        <input type="text" ng-model="text" name="text" />
+      <form ng-submit="main.getInfo(main.trackId)">
+        <div class="input-headline-container">
+          <h1 class="input-headline">Enter a Spotify URL to generate your own wallpaper</h1>
+        </div>
+        <input type="text" ng-model="main.trackId" name="text" />
         <input type="submit" id="submit" value="Submit" />
       </form>
+      <button ng-click="main.quotePrev()">Previous line</button>
+      <button ng-click="main.quoteNext()">Next line</button>
     </div>
     <div class="col-md-6 preview">
-      Preview area {{ main.things }}
+      <ng-include src="'views/templates/quote.html'" class="template-quote"></ng-include>
     </div>
   </div>
 </div>

@@ -1,16 +1,19 @@
-<div class="template-body">
-  <div class="tint">
-    <div class="border">
-      <div class="content">
-        <h1 class="content-quote">
-          "Believe in your flyness, conquer your shyness"
+<div
+  class="template-body quote-template-body"
+  style="background-image: url('{{ main.poster.artistImageUrl }}')">
+  <div class="quote-tint">
+    <div class="quote-border">
+      <div class="quote-content">
+        <h1 class="quote-content-quote">
+          "{{ main.poster.lyrics[main.poster.quoteIndex] }}"
         </h1>
-        <h2 class="content-name">
-          <span class="content-name-borders">
-            Kanye West <span class="diamond">&diams;</span> <em>Monster</em>
+        <h2 class="quote-content-name">
+          <span class="quote-content-name-borders">
+          {{ main.poster.artist }}
+          <span class="quote-diamond">&diams;</span>
+          <em>{{ main.poster.track }}</em>
           </span>
         </h2>
-      </div>
     </div>
   </div>
 </div>
