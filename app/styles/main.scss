@@ -1,7 +1,10 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "components-font-awesome/scss/font-awesome.scss";
 // endbower
+
+$primary: #2ecc71;
 
 html,
 body,
@@ -28,27 +31,160 @@ body,
   margin: 0;
 }
 
-.input,
+.controls,
 .preview {
   height: 100%;
 }
 
-.input {
-  background-color: #2ecc71;
-  font-family: 'Roboto', sans-serif;
+.controls {
+  background-color: $primary;
+  font-family: 'Montserrat', sans-serif;
   color: #fff;
 }
 
-.input-headline-container
-{
-  width: 100%;
-  padding: 20px;
-  text-align: center;
+.controls-headline {
+  font-weight: 400;
+  font-size: 1.25em;
 }
 
-.input-headline {
-  font-weight: 500;
-  font-size: 1.5em;
+.controls-subline {
+  font-weight: 400;
+  font-size: 0.8em;
+}
+
+.controls-favourites
+{
+  list-style-type: none;
+  padding: 0;
+}
+
+.controls-favourite {
+  background: darken($primary, 5);
+  font-size: 0.8em;
+  font-weight: 400;
+  padding: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  color: #fff;
+  margin: 3px 0;
+}
+
+.controls-input
+{
+  border-radius: 0;
+  box-shadow: 0 0 0 0;
+  padding: 10px;
+  font-size: 1em;
+  color: #777;
+  outline: none !important;
+  border: 0;
+  height: 40px;
+
+  &:focus
+  {
+    border: 0;
+  }
+
+  &::placeholder
+  {
+    color: #bbb;
+  }
+}
+
+.walkthrough
+{
+  background: #32414b;
+  color: #fff;
+  height: 100px;
+}
+
+.walkthrough-btn
+{
+  text-align: center;
+  opacity: 0.7;
+  height: 100%;
+  cursor: pointer;
+
+  span
+  {
+    line-height: 100px;
+  }
+
+  &:hover
+  {
+    background: #27333a;
+  }
+}
+
+.walkthrough-btn-active
+{
+  opacity: 1;
+  background: $primary;
+  height: 100%;
+
+  &:hover
+  {
+    background: $primary;
+  }
+}
+
+.controls-submit
+{
+  height: 40px;
+  border: 0;
+  background: darken($primary, 10);
+  color: #fff;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 0;
+
+  &:hover
+  {
+    color: #fff;
+    background: darken($primary, 14);
+  }
+
+  &:focus,
+  &:active
+  {
+    background: darken($primary, 18);
+    color: #fff;
+  }
+
+  outline: none !important;
+}
+
+.controls-btn
+{
+  background: darken($primary, 10);
+  padding: 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 0;
+  color: #fff;
+  outline: none !important;
+
+  &:hover
+  {
+    background: darken($primary, 14);
+  }
+
+  &:focus,
+  &:active
+  {
+    background: darken($primary, 18);
+  }
+}
+
+.quote-controls
+{
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100; //???
 }
 
 .preview {

@@ -1,17 +1,64 @@
 <div class="container" ng-controller="MainCtrl as main">
   <div class="row">
-    <div class="col-md-6 input">
-      <form ng-submit="main.getInfo(main.trackId)">
-        <div class="input-headline-container">
-          <h1 class="input-headline">Enter a Spotify URL to generate your own wallpaper</h1>
+    <div class="col-md-4 controls">
+      <header class="walkthrough row">
+        <div class="col-xs-4 walkthrough-btn walkthrough-btn-active">
+          <span><i class="fa fa-music"></i> Pick song</span>
         </div>
-        <input type="text" ng-model="main.trackId" name="text" />
-        <input type="submit" id="submit" value="Submit" />
+        <div class="col-xs-4 walkthrough-btn">
+          <span><i class="fa fa-pencil"></i> Customize</span>
+        </div>
+        <div class="col-xs-4 walkthrough-btn">
+          <span><i class="fa fa-share"></i> Save & share</span>
+        </div>
+      </header>
+      <h1 class="controls-headline">Generate your wallpaper</h1>
+      <form ng-submit="main.getInfo(main.trackId)">
+        <div class="input-group">
+          <input
+            class="form-control controls-input"
+            type="text"
+            ng-model="main.trackId"
+            placeholder="Paste a Spotify URL" />
+          <span class="input-group-btn">
+            <button class="btn btn-default controls-submit" type="submit">
+              Create
+            </button>
+          </span>
+        </div>
       </form>
-      <button ng-click="main.quotePrev()">Previous line</button>
-      <button ng-click="main.quoteNext()">Next line</button>
+      <h2 class="controls-subline">...or try some of the best songs</h2>
+      <ul class="controls-favourites">
+        <li
+          class="controls-favourite"
+          ng-click="main.getInfo('7zQXlpaBniXYrmDfiCzI9t')">
+          Håkan Hellström – Kom igen Lena!
+        </li>
+        <li
+          class="controls-favourite"
+          ng-click="main.getInfo('11DtRXljoN4MNboh11PIev')">
+          Oskar Linnros – Ack, Sundbyberg
+        </li>
+        <li
+          class="controls-favourite"
+          ng-click="main.getInfo('5T8EDUDqKcs6OSOwEsfqG7')">
+          Queen – Don't stop me now
+        </li>
+      </ul>
+      <div class="quote-controls" ng-if="main.poster.lyrics.length > 1">
+        <button
+          class="controls-btn"
+          ng-click="main.quotePrev()">
+          <i class="fa fa-angle-left"></i> Previous line
+        </button>
+        <button
+          class="controls-btn"
+          ng-click="main.quoteNext()">
+          Next line <i class="fa fa-angle-right"></i>
+        </button>
+      </div>
     </div>
-    <div class="col-md-6 preview">
+    <div class="col-md-8 preview">
       <ng-include src="'views/templates/quote.html'" class="template-quote"></ng-include>
     </div>
   </div>
