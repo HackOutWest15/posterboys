@@ -3,6 +3,40 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+html,
+body,
+[ng-view],
+.container {
+  min-height: 100%;
+  height: 100%;
+}
+
+body,
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+.container
+{
+  width: 100%;
+}
+
+.container > .row {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.input,
+.preview {
+  height: 100%;
+}
+
+.preview {
+  background: red;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
 

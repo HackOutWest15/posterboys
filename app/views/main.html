@@ -1,3 +1,12 @@
-<h1>
-This is our view (views/main.html)!!!!
-</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 input">
+      Input area (type song here, customize etc i guess)
+    </div>
+    <div class="col-md-6 preview">
+      Preview area
+      {{ awesomeThings }}
+      <div ng-include="views/templates/quote.html"></div>
+    </div>
+  </div>
+</div>
