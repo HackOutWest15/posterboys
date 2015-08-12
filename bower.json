@@ -7,15 +7,16 @@
     "es5-shim": "~3.1.0",
     "bootstrap-sass-official": "~3.2.0",
     "angular-resource": "~1.2.0",
-    "angular-cookies": "~1.2.0",
-    "angular-sanitize": "~1.2.0",
     "angular-animate": "~1.2.0",
-    "angular-touch": "~1.2.0",
+    "angular-cookies": "~1.2.0",
     "angular-route": "~1.2.0",
+    "angular-sanitize": "~1.2.0",
+    "angular-touch": "~1.2.0",
     "angular-spotify": "~1.0.0",
     "components-font-awesome": "components/font-awesome#~4.4.0",
     "angular-bootstrap-colorpicker": "~3.0.18",
-    "html2canvas": "0.5.0-alpha2"
+    "html2canvas": "0.5.0-alpha2",
+    "jquery": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",
