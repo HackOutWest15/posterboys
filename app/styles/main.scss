@@ -4,7 +4,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "components-font-awesome/scss/font-awesome.scss";
 // endbower
 
+#sliderS{
+  margin-top:20px;
 
+}
 
 
 
@@ -202,13 +205,19 @@ body,
   height: 100px;
 }
 
+#iconText
+{
+  margin-top: 10px;
+}
+
 .walkthrough-btn
 {
   text-align: center;
   opacity: 0.55;
   height: 100%;
   cursor: pointer;
-  padding-top: 35px;
+  padding-top: 20px;
+
 
   &:hover
   {

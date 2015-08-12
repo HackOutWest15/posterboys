@@ -6,19 +6,23 @@
           class="col-xs-4 walkthrough-btn walkthrough-btn-active"
           ng-click="main.step = main.STEP_CREATE"
           ng-class="{'walkthrough-btn-active': main.step === main.STEP_CREATE}">
-          <span><i class="fa fa-music"></i> Pick song</span>
+          <span><i class="fa fa-music fa-3x"></i></span>
+          
+          <p id="iconText">Pick song</p>
         </div>
         <div
           class="col-xs-4 walkthrough-btn"
           ng-click="main.step = main.STEP_CUSTOMIZE"
           ng-class="{'walkthrough-btn-active': main.step === main.STEP_CUSTOMIZE}">
-          <span><i class="fa fa-pencil"></i> Customize</span>
+          <span><i class="fa fa-pencil fa-3x"></i></span>
+          <p id="iconText">Customize</p>
         </div>
         <div
           class="col-xs-4 walkthrough-btn"
           ng-click="main.step = main.STEP_SAVE"
           ng-class="{'walkthrough-btn-active': main.step === main.STEP_SAVE}">
-          <span><i class="fa fa-pencil"></i> Save & share</span>
+          <span><i class="fa fa-pencil fa-3x"></i></span>
+          <p id="iconText">Save & Share</p>
         </div>
       </header>
       <div ng-switch="main.step">
@@ -69,15 +73,19 @@
         </div>
         <div ng-switch-when="1">
           <h1 class="controls-headline">Customize your card</h1>
-          <label for="lyric-slider">
-            Lyrics size
+          <br>
+          Lyrics size
+          
+          <label for="lyric-slider"></label>
             <input
+              id= "sliderS"
               name="lyric-slider"
               type="range"
               ng-model="main.poster.fontSize"
               min="2"
               max="6"/>
-          </label>
+          <br>
+
           <div class="checkbox">
             <label>
               <input type="checkbox" ng-model="main.poster.showArtist"> Show artist name
