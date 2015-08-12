@@ -111,4 +111,27 @@ angular.module('posterboyApp')
       });
     };
 
+    ctrl.generateImg = function (format) {
+      var poster = document.getElementById('poster');
+      /// var originalWidth = poster.width;
+      /// var originalHeight = poster.height;
+      angular.element(poster).addClass('format-' + format);
+      window.html2canvas(poster, {
+        allowTaint: true,
+        logging: true,
+        proxy: 'https://immense-ridge-3213.herokuapp.com/proxy.php'
+      }).then(function(canvas) {
+        var posterWindow = window.open();
+        posterWindow.document.write('<canvas id="poster" width="' + canvas.width + '" height="' + canvas.height + '"></canvas>');
+        var newCanvas = posterWindow.document.getElementById('poster');
+        var newCtx = newCanvas.getContext('2d');
+        newCtx.drawImage(canvas, 0, 0);
+        angular.element(poster).removeClass('format-' + format);
+        // DO SOMETHING WITH CANVAS
+        console.log(ctrl);
+      }, function() {
+        window.alert('An error occured!');
+      });
+    };
+
   });

@@ -16,10 +16,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 input[type=range] {
     /*removes default webkit styles*/
     -webkit-appearance: none;
-    
+
     /*fix for FF unable to apply focus style bug */
     border: 1px solid white;
-    
+
     /*required for proper track sizing in FF*/
     width: 300px;
 }
@@ -70,10 +70,10 @@ input[type=range]:-moz-focusring{
 input[type=range]::-ms-track {
     width: 300px;
     height: 5px;
-    
+
     /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
     background: transparent;
-    
+
     /*leave room for the larger thumb to overflow with a transparent border */
     border-color: transparent;
     border-width: 6px 0;
@@ -310,6 +310,36 @@ body,
 .template-body
 {
   height: 100%;
+}
+
+@mixin sizes($width, $height) {
+  width: $width !important;
+  height: $height !important;
+}
+
+.format-iphone5
+{
+  @include sizes(640px, 1136px);
+}
+
+.format-iphone6
+{
+  @include sizes(750px, 1334px);
+}
+
+.format-iphone6p
+{
+  @include sizes(1080px, 1920px);
+}
+
+.format-galaxy6
+{
+  @include sizes(1440px, 2560px);
+}
+
+.format-galaxy4
+{
+  @include sizes(1080px, 1920px);
 }
 
 /* Responsive: Portrait tablets and up */

@@ -6,22 +6,22 @@
           class="col-xs-4 walkthrough-btn walkthrough-btn-active"
           ng-click="main.step = main.STEP_CREATE"
           ng-class="{'walkthrough-btn-active': main.step === main.STEP_CREATE}">
-          <span><i class="fa fa-music fa-3x"></i></span>
-          
+          <span><i class="fa fa-music fa-2x"></i></span>
+
           <p id="iconText">Pick song</p>
         </div>
         <div
           class="col-xs-4 walkthrough-btn"
           ng-click="main.step = main.STEP_CUSTOMIZE"
           ng-class="{'walkthrough-btn-active': main.step === main.STEP_CUSTOMIZE}">
-          <span><i class="fa fa-paint-brush fa-3x"></i></span>
+          <span><i class="fa fa-paint-brush fa-2x"></i></span>
           <p id="iconText">Customize</p>
         </div>
         <div
           class="col-xs-4 walkthrough-btn"
           ng-click="main.step = main.STEP_SAVE"
           ng-class="{'walkthrough-btn-active': main.step === main.STEP_SAVE}">
-          <span><i class="fa fa-share-alt fa-3x"></i></span>
+          <span><i class="fa fa-share-alt fa-2x"></i></span>
           <p id="iconText">Save & Share</p>
         </div>
       </header>
@@ -75,7 +75,7 @@
           <h1 class="controls-headline">Customize your card</h1>
           <br>
           Lyrics size
-          
+
           <label for="lyric-slider"></label>
             <input
               id= "sliderS"
@@ -101,28 +101,56 @@
               <input type="checkbox" ng-model="main.poster.showBorder"> Show border
             </label>
           </div>
-          <button class="btn btn-default" colorpicker="rgba" colorpicker-position="bottom" type="button" colorpicker-position="top" ng-model="main.poster.bgTint">
+          <button class="controls-btn" colorpicker="rgba" colorpicker-position="bottom" type="button" colorpicker-position="top" ng-model="main.poster.bgTint">
               Change color & opacity
           </button>
         </div>
         <div ng-switch-when="2">
           <h1 class="controls-headline">Save and share your card</h1>
-          <br>
           <ul class="controls-favourites">
             <li
-              class="controls-favourite shareText"
+              class="controls-favourite"
               ng-click="">
-              <i class="fa fa-facebook-square fa-2x"></i>
-              &nbsp;&nbsp; Share to Facebook
+              <i class="fa fa-facebook-square"></i>
+              Share to Facebook
             </li>
-          
-           <li
-              class="controls-favourite shareText"
+            <li
+              class="controls-favourite"
               ng-click="">
-              <i class="fa fa-dropbox fa-2x"></i>
-              &nbsp;&nbsp; Share to Dropbox
+              <i class="fa fa-dropbox"></i>
+              Share to Dropbox
             </li>
-      </ul>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('iphone5')">
+              <i class="fa fa-mobile-phone"></i>
+              iPhone 5/5s background
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('iphone6')">
+              <i class="fa fa-mobile-phone"></i>
+              iPhone 6 background
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('iphone6p')">
+              <i class="fa fa-mobile-phone"></i>
+              iPhone 6 Plus background
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('galaxy6')">
+              <i class="fa fa-mobile-phone"></i>
+              Galaxy 6/6 Edge background
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('galaxy4')">
+              <i class="fa fa-mobile-phone"></i>
+              Galaxy 4/5 background
+            </li>
+          </ul>
         </div>
       </div>
       <div class="quote-controls" ng-if="main.poster.lyrics.length > 1">
