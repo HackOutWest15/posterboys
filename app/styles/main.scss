@@ -176,6 +176,15 @@ body,
 {
   list-style-type: none;
   padding: 0;
+
+}
+
+li
+{
+ &:hover
+  {
+    background: darken($primary, 14);
+  }
 }
 
 .controls-favourite {
@@ -378,4 +387,3 @@ body,
 
 @import "quote";
 @import "loader";
-@import "checkbox.css";

@@ -22,7 +22,7 @@
           ng-click="main.step = main.STEP_SAVE"
           ng-class="{'walkthrough-btn-active': main.step === main.STEP_SAVE}">
           <span><i class="fa fa-share-alt fa-2x"></i></span>
-          <p id="iconText">Save & Share</p>
+          <p id="iconText">Share & Save</p>
         </div>
       </header>
       <div ng-switch="main.step">
@@ -154,20 +154,25 @@
           </button>
         </div>
         <div ng-switch-when="2">
-          <h1 class="controls-headline">Save and share your card</h1>
-          <ul class="controls-favourites">
+          <h1 class="controls-headline">Share and save your card</h1>
+          <ul class="controls-favourites list-inline">
             <li
               class="controls-favourite"
-              ng-click="">
-              <i class="fa fa-facebook-square"></i>
-              Share to Facebook
+              ng-click="">&nbsp; 
+              <i class="fa fa-facebook-square fa-2x"></i>
+              &nbsp; Share to Facebook&nbsp; 
             </li>
             <li
               class="controls-favourite"
-              ng-click="">
-              <i class="fa fa-dropbox"></i>
-              Share to Dropbox
+              ng-click="">&nbsp; 
+              <i class="fa fa-dropbox  fa-2x"></i>
+              &nbsp; Share to Dropbox&nbsp; 
             </li>
+          </ul>
+          
+          <h1 class="controls-headline">Resize as wallpaper</h1>
+          <ul class="controls-favourites list-inline">
+            
             <li
               class="controls-favourite"
               ng-click="main.generateImg('desktop')">
@@ -182,33 +187,35 @@
             </li>
             <li
               class="controls-favourite"
-              ng-click="main.generateImg('iphone5')">
-              <i class="fa fa-mobile-phone"></i>
-              iPhone 5/5s background
+              
+              ng-click="main.generateImg('iphone6p')">
+              <i class="fa fa-mobile-phone fa-2x"></i>
+              &nbsp; iPhone 6 Plus &nbsp;  
+
             </li>
             <li
               class="controls-favourite"
               ng-click="main.generateImg('iphone6')">
-              <i class="fa fa-mobile-phone"></i>
-              iPhone 6 background
+              <i class="fa fa-mobile-phone fa-2x"></i>
+             &nbsp; iPhone 6 &nbsp; 
             </li>
             <li
               class="controls-favourite"
-              ng-click="main.generateImg('iphone6p')">
-              <i class="fa fa-mobile-phone"></i>
-              iPhone 6 Plus background
+              ng-click="main.generateImg('iphone5')">
+              <i class="fa fa-mobile-phone fa-2x"></i>
+              &nbsp; iPhone 5/5s &nbsp; 
             </li>
             <li
               class="controls-favourite"
               ng-click="main.generateImg('galaxy6')">
-              <i class="fa fa-mobile-phone"></i>
-              Galaxy 6/6 Edge background
+              <i class="fa fa-mobile-phone fa-2x"></i>
+              &nbsp; Galaxy 6/6 Edge &nbsp;  
             </li>
             <li
               class="controls-favourite"
               ng-click="main.generateImg('galaxy4')">
-              <i class="fa fa-mobile-phone"></i>
-              Galaxy 4/5 background
+              <i class="fa fa-mobile-phone fa-2x"></i>
+              &nbsp; Galaxy 4/5 &nbsp; 
             </li>
           </ul>
         </div>
