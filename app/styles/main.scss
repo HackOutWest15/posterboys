@@ -163,7 +163,7 @@ body,
   }
 
   h2 {
-    font-size: 1.2em
+    font-size: 1.2em;
     margin-bottom: 15px;
   }
 }
@@ -354,6 +354,22 @@ body,
 .format-galaxy4
 {
   @include sizes(1080px, 1920px);
+}
+
+.format-desktop
+{
+  @include sizes(1920px, 1080px);
+}
+
+.format-macbook
+{
+  @include sizes(1280px, 800px);
+}
+
+.controls-float
+{
+  margin-top: 0;
+  display: inline-block;
 }
 
 /* Responsive: Portrait tablets and up */

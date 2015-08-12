@@ -36,7 +36,7 @@
                 ng-model="main.trackId"
                 placeholder="Paste a Spotify URL" />
               <span class="input-group-btn">
-                <button class="btn btn-default controls-submit" type="submit">
+                <button class="btn btn-default controls-submit" style="margin-top: 0" type="submit">
                   Create
                 </button>
               </span>
@@ -170,6 +170,18 @@
             </li>
             <li
               class="controls-favourite"
+              ng-click="main.generateImg('desktop')">
+              <i class="fa fa-desktop"></i>
+              1920x1080 background
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('macbook')">
+              <i class="fa fa-desktop"></i>
+              1280x800 background
+            </li>
+            <li
+              class="controls-favourite"
               ng-click="main.generateImg('iphone5')">
               <i class="fa fa-mobile-phone"></i>
               iPhone 5/5s background
@@ -203,17 +215,17 @@
       </div>
       <div class="quote-controls" ng-if="main.poster.lyrics.length > 1">
         <button
-          class="controls-btn"
+          class="controls-btn controls-float"
           ng-click="main.quotePrev()">
           <i class="fa fa-angle-left"></i> Previous line
         </button>
         <button
-          class="controls-btn"
+          class="controls-btn controls-float"
           ng-click="main.quoteNext()">
           Next line <i class="fa fa-angle-right"></i>
         </button>
         <button
-          class="controls-btn"
+          class="controls-btn controls-float"
           ng-click="main.changeImage()">
           <i class="fa fa-refresh"></i> Change image
         </button>
