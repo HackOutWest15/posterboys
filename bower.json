@@ -14,7 +14,8 @@
     "angular-route": "~1.2.0",
     "angular-spotify": "~1.0.0",
     "components-font-awesome": "components/font-awesome#~4.4.0",
-    "angular-bootstrap-colorpicker": "~3.0.18"
+    "angular-bootstrap-colorpicker": "~3.0.18",
+    "html2canvas": "0.5.0-alpha2"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",
