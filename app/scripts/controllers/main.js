@@ -8,12 +8,13 @@
  * Controller of the posterboyApp
  */
 angular.module('posterboyApp')
-  .controller('MainCtrl', function ($q, MusixService, Spotify, echonestApiService) {
+  .controller('MainCtrl', function ($q, $http, MusixService, Spotify, echonestApiService) {
     var ctrl = this;
 
     ctrl.STEP_CREATE = 0;
     ctrl.STEP_CUSTOMIZE = 1;
     ctrl.STEP_SAVE = 2;
+    ctrl.IMAGE_ENCODER_URL = 'https://immense-ridge-3213.herokuapp.com/base64.php?url=';
 
     ctrl.step = 0;
     ctrl.isLoading = false;
@@ -28,6 +29,19 @@ angular.module('posterboyApp')
       showArtist: true,
       showTitle: true,
       fontSize: 4
+    };
+
+    ctrl._encodeImage = function(imageUrl) {
+      var imageEncoded = $q.defer();
+      $http({
+        method: 'GET',
+        url: ctrl.IMAGE_ENCODER_URL + imageUrl
+      }).then(function(d) {
+        if (d.data) {
+          imageEncoded.resolve(ctrl.poster.artistImageUrl = d.data.data);
+        }
+      });
+      return imageEncoded.promise;
     };
 
     // Quotes poster controls
@@ -45,9 +59,12 @@ angular.module('posterboyApp')
     };
 
     ctrl.changeImage = function() {
+      ctrl.isLoading = true;
       echonestApiService.getRandomArtistImage(ctrl.poster.artistId).then(function(imageUrl) {
-        console.log(imageUrl);
-        ctrl.poster.artistImageUrl = imageUrl;
+          ctrl._encodeImage(imageUrl).then(function(encodedUrl) {
+            ctrl.poster.artistImageUrl = encodedUrl;
+            ctrl.isLoading = false;
+          });
       });
     };
 
@@ -70,8 +87,11 @@ angular.module('posterboyApp')
         ctrl.loadingPoster.artist = response[0].artists[0].name;
         ctrl.loadingPoster.artistId = response[0].artists[0].id;
 
-        /* Create Echonest image promise */
-        var echoImgPromise = echonestApiService.getRandomArtistImage(ctrl.loadingPoster.artistId);
+        /* Create encoded image promise */
+        var imgPromise = echonestApiService.getRandomArtistImage(ctrl.loadingPoster.artistId).
+          then(function(response) {
+            return ctrl._encodeImage(response);
+          });
         var lyricsPromise;
 
         if(response[1] && response[1].data && response[1].data.response && response[1].data.response.songs) {
@@ -81,7 +101,7 @@ angular.module('posterboyApp')
           lyricsPromise = MusixService.getLyrics(musixId);
         }
 
-        $q.all([echoImgPromise, lyricsPromise]).then(function(response) {
+        $q.all([imgPromise, lyricsPromise]).then(function(response) {
           ctrl.loadingPoster.artistImageUrl = response[0];
 
           if(response[1] && response[1].data && response[1].data.message && response[1].data.message.body
