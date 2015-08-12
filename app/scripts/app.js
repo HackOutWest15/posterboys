@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'spotify'
+    'spotify',
+    'colorpicker.module'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

@@ -29,7 +29,8 @@ angular.module('posterboyApp')
       showArtist: true,
       showTitle: true,
       showBorder: true,
-      fontSize: 4
+      fontSize: 4,
+      bgTint: 'rgba(0, 0, 0, 0.65)'
     };
 
     ctrl._encodeImage = function(imageUrl) {
