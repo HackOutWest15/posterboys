@@ -51,6 +51,7 @@ angular.module('posterboyApp')
       echonestApiService.getRandomArtistImage(ctrl.poster.artistId).then(function(imageUrl) {
         ctrl.poster.artistImageUrl = imageUrl;
       });
+      ctrl.isLoading = false;
     };
 
     ctrl.loadingPoster = {};
