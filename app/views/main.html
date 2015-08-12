@@ -27,7 +27,7 @@
       </header>
       <div ng-switch="main.step">
         <div ng-switch-when="0">
-          <h1 class="controls-headline">Generate your card</h1>
+          <h1 class="controls-headline">Generate your card:</h1>
           <form ng-submit="main.getInfo(main.trackId)">
             <div class="input-group">
               <input
@@ -42,7 +42,7 @@
               </span>
             </div>
           </form>
-          <h2 class="controls-subline">...or try some popular songs</h2>
+          <h2 class="controls-subline">...or try some popular songs:</h2>
           <ul class="controls-favourites">
             <li
               class="controls-favourite"
@@ -72,9 +72,12 @@
           </ul>
         </div>
         <div ng-switch-when="1">
-          <h1 class="controls-headline">Customize your card</h1>
-
-          <h2 class="controls-subline">Lyrics size</h2>
+          <!-- <h1 class="controls-headline">Customize your card</h1> -->
+          <h1 class="controls-subline">Background:</h1>
+          <button class="controls-btn" colorpicker="rgba" colorpicker-position="bottom" type="button" ng-model="main.poster.bgTint">
+              Pick color & opacity
+          </button>
+          <h1 class="controls-subline">Lyrics size:</h1>
           <input
             id= "sliderS"
             name="lyric-slider"
@@ -83,24 +86,7 @@
             min="2"
             max="6"/>
 
-          <h2 class="controls-subline">Content</h2>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" ng-model="main.poster.showArtist"> Show artist name
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" ng-model="main.poster.showTitle"> Show song title
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" ng-model="main.poster.showBorder"> Show border
-            </label>
-          </div>
-
-          <h2 class="controls-subline">Lyric font</h2>
+          <h1 class="controls-subline">Lyrics font:</h1>
           <select ng-model="main.poster.quoteFontFamily">
               <option value="Oswald">
                   Oswald
@@ -124,7 +110,7 @@
                   Share Tech Mono
               </option>
           </select>
-          <h2 class="controls-subline">Artist/title font</h2>
+          <h1 class="controls-subline">Artist/track font:</h1>
           <select ng-model="main.poster.artistTitleFontFamily">
               <option value="Oswald">
                   Oswald
@@ -148,13 +134,26 @@
                   Share Tech Mono
               </option>
           </select>
-          <h2 class="controls-subline">Background color & opacity</h2>
-          <button class="controls-btn" colorpicker="rgba" colorpicker-position="bottom" type="button" ng-model="main.poster.bgTint">
-              Pick color & opacity
-          </button>
+          <br><br>
+          <h1 class="controls-subline">Content:</h1>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="main.poster.showArtist"> Show artist name
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="main.poster.showTitle"> Show song title
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="main.poster.showBorder"> Show border
+            </label>
+          </div>
         </div>
         <div ng-switch-when="2">
-          <h1 class="controls-headline">Share and save your card</h1>
+          <h1 class="controls-headline">Share and save your card:</h1>
           <ul class="controls-favourites list-inline">
             <li
               class="controls-favourite"
@@ -166,56 +165,60 @@
               class="controls-favourite"
               ng-click="">&nbsp; 
               <i class="fa fa-dropbox  fa-2x"></i>
-              &nbsp; Share to Dropbox&nbsp; 
+              &nbsp; Save to Dropbox&nbsp; 
             </li>
           </ul>
           
-          <h1 class="controls-headline">Resize as wallpaper</h1>
+          <h1 class="controls-headline">Resize as wallpaper:</h1>
           <ul class="controls-favourites list-inline">
             
             <li
               class="controls-favourite"
               ng-click="main.generateImg('desktop')">
-              <i class="fa fa-desktop"></i>
-              1920x1080 background
+              <i class="fa fa-desktop fa-2x"></i>
+              &nbsp;1920x1080 
             </li>
             <li
               class="controls-favourite"
               ng-click="main.generateImg('macbook')">
-              <i class="fa fa-desktop"></i>
-              1280x800 background
+              <i class="fa fa-desktop fa-2x"></i>
+              &nbsp;1280x800 
             </li>
+            </ul>
+            <ul class="controls-favourites list-inline">
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('galaxy6')">
+              <i class="fa fa-android fa-2x"></i>
+              &nbsp; Galaxy 6/6 Edge &nbsp;  
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('galaxy4')">
+              <i class="fa fa-android fa-2x"></i>
+              &nbsp; Galaxy 4/5 &nbsp; 
+            </li>
+          </ul>
+          <ul class="controls-favourites list-inline">
             <li
               class="controls-favourite"
               
               ng-click="main.generateImg('iphone6p')">
-              <i class="fa fa-mobile-phone fa-2x"></i>
+              <i class="fa fa-apple fa-2x"></i>
               &nbsp; iPhone 6 Plus &nbsp;  
 
             </li>
             <li
               class="controls-favourite"
               ng-click="main.generateImg('iphone6')">
-              <i class="fa fa-mobile-phone fa-2x"></i>
+              <i class="fa fa-apple fa-2x"></i>
              &nbsp; iPhone 6 &nbsp; 
             </li>
             <li
               class="controls-favourite"
               ng-click="main.generateImg('iphone5')">
-              <i class="fa fa-mobile-phone fa-2x"></i>
+              <i class="fa fa-apple fa-2x"></i>
               &nbsp; iPhone 5/5s &nbsp; 
-            </li>
-            <li
-              class="controls-favourite"
-              ng-click="main.generateImg('galaxy6')">
-              <i class="fa fa-mobile-phone fa-2x"></i>
-              &nbsp; Galaxy 6/6 Edge &nbsp;  
-            </li>
-            <li
-              class="controls-favourite"
-              ng-click="main.generateImg('galaxy4')">
-              <i class="fa fa-mobile-phone fa-2x"></i>
-              &nbsp; Galaxy 4/5 &nbsp; 
             </li>
           </ul>
         </div>
