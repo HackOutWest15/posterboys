@@ -1,0 +1,389 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "components-font-awesome/scss/font-awesome.scss";
+// endbower
+$primary: #2ecc71;
+
+@import url(http://fonts.googleapis.com/css?family=Courgette);
+@import url(http://fonts.googleapis.com/css?family=Berkshire%20Swash);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Noto%20Sans);
+@import url(http://fonts.googleapis.com/css?family=Text%20Me%20One);
+@import url(http://fonts.googleapis.com/css?family=Share%20Tech%20Mono);
+
+#sliderS{
+  margin-top:20px;
+}
+
+//begin range
+
+input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+
+    outline: none;
+    /*required for proper track sizing in FF*/
+    width: 300px;
+}
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-webkit-slider-runnable-track:focus {
+    width: 300px;
+    height: 5px;
+    background: darken($primary, 8) !important;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: darken($primary, 17);
+    margin-top: -4px;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+input[type=range]::-moz-range-track {
+    width: 300px;
+    height: 5px;
+    background: #39ca74;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #33414b;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+    width: 300px;
+    height: 5px;
+
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #39ca74;
+    border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #33414b;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
+//end of range
+
+
+
+
+html,
+body,
+[ng-view],
+.container {
+  min-height: 100%;
+  height: 100%;
+}
+
+body.lock
+{
+  overflow: hidden !important;
+}
+
+body,
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+.container
+{
+  width: 100%;
+}
+
+.container > .row {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.controls,
+.preview {
+  height: 100%;
+}
+
+.controls {
+  background-color: $primary;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+
+  button {
+    display: block;
+    margin-top: 15px;
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: 1.4em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+}
+
+.controls-subline {
+  font-weight: 400;
+  font-size: 0.8em;
+}
+
+.controls-favourites
+{
+  list-style-type: none;
+  padding: 0;
+
+}
+
+li
+{
+ &:hover
+  {
+    background: darken($primary, 14);
+  }
+}
+
+.controls-favourite {
+  background: darken($primary, 5);
+  font-size: 0.8em;
+  font-weight: 400;
+  padding: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  color: #fff;
+  margin: 3px 0;
+}
+
+.controls-input
+{
+  border-radius: 0;
+  box-shadow: 0 0 0 0;
+  padding: 10px;
+  font-size: 1em;
+  color: #777;
+  outline: none !important;
+  border: 0;
+  height: 40px;
+
+  &:focus
+  {
+    border: 0;
+  }
+
+  &::placeholder
+  {
+    color: #bbb;
+  }
+}
+
+.walkthrough
+{
+  background: #32414b;
+  color: #fff;
+  height: 100px;
+}
+
+#iconText
+{
+  margin-top: 10px;
+}
+
+.shareText
+{
+  font-size:16px;
+}
+
+.walkthrough-btn
+{
+  text-align: center;
+  opacity: 0.55;
+  height: 100%;
+  cursor: pointer;
+  padding-top: 20px;
+
+
+  &:hover
+  {
+    background: #27333a;
+  }
+}
+
+.walkthrough-btn-active
+{
+  opacity: 1;
+  background: $primary;
+  height: 100%;
+
+  &:hover
+  {
+    background: $primary;
+  }
+}
+
+.controls-submit
+{
+  height: 40px;
+  border: 0;
+  background: darken($primary, 10);
+  color: #fff;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 0;
+
+  &:hover
+  {
+    color: #fff;
+    background: darken($primary, 14);
+    border: 0;
+  }
+
+  &:focus,
+  &:active
+  {
+    background: darken($primary, 18);
+    color: #fff;
+  }
+
+  outline: none !important;
+}
+
+.controls-btn
+{
+  background: darken($primary, 10);
+  padding: 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 0;
+  color: #fff;
+  outline: none !important;
+
+  &:hover
+  {
+    background: darken($primary, 14);
+  }
+
+  &:focus,
+  &:active
+  {
+    background: darken($primary, 18);
+  }
+}
+
+.quote-controls
+{
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100; //???
+}
+
+.preview {
+  background: #fff;
+  padding: 25px;
+}
+
+.template-body
+{
+  height: 100%;
+}
+
+@mixin sizes($width, $height) {
+  width: $width !important;
+  height: $height !important;
+}
+
+.format-iphone5
+{
+  @include sizes(640px, 1136px);
+}
+
+.format-iphone6
+{
+  @include sizes(750px, 1334px);
+}
+
+.format-iphone6p
+{
+  @include sizes(1080px, 1920px);
+}
+
+.format-galaxy6
+{
+  @include sizes(1440px, 2560px);
+}
+
+.format-galaxy4
+{
+  @include sizes(1080px, 1920px);
+}
+
+.format-desktop
+{
+  @include sizes(1920px, 1080px);
+}
+
+.format-macbook
+{
+  @include sizes(1280px, 800px);
+}
+
+.controls-float
+{
+  margin-top: 0;
+  display: inline-block;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+}
+
+@import "quote";
+@import "loader";

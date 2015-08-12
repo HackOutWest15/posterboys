@@ -1,0 +1,253 @@
+<div class="container" ng-controller="MainCtrl as main">
+  <div class="row">
+    <div class="col-md-4 controls">
+      <header class="walkthrough row">
+        <div
+          class="col-xs-4 walkthrough-btn walkthrough-btn-active"
+          ng-click="main.step = main.STEP_CREATE"
+          ng-class="{'walkthrough-btn-active': main.step === main.STEP_CREATE}">
+          <span><i class="fa fa-music fa-2x"></i></span>
+
+          <p id="iconText">Pick song</p>
+        </div>
+        <div
+          class="col-xs-4 walkthrough-btn"
+          ng-click="main.step = main.STEP_CUSTOMIZE"
+          ng-class="{'walkthrough-btn-active': main.step === main.STEP_CUSTOMIZE}">
+          <span><i class="fa fa-paint-brush fa-2x"></i></span>
+          <p id="iconText">Customize</p>
+        </div>
+        <div
+          class="col-xs-4 walkthrough-btn"
+          ng-click="main.step = main.STEP_SAVE"
+          ng-class="{'walkthrough-btn-active': main.step === main.STEP_SAVE}">
+          <span><i class="fa fa-share-alt fa-2x"></i></span>
+          <p id="iconText">Share & Save</p>
+        </div>
+      </header>
+      <div ng-switch="main.step">
+        <div ng-switch-when="0">
+          <h1 class="controls-headline">Generate your card:</h1>
+          <form ng-submit="main.getInfo(main.trackId)">
+            <div class="input-group">
+              <input
+                class="form-control controls-input"
+                type="text"
+                ng-model="main.trackId"
+                placeholder="Paste a Spotify URL" />
+              <span class="input-group-btn">
+                <button class="btn btn-default controls-submit" style="margin-top: 0" type="submit">
+                  Create
+                </button>
+              </span>
+            </div>
+          </form>
+          <h2 class="controls-subline">...or try some popular songs:</h2>
+          <ul class="controls-favourites">
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('3SjXx3rbNGk8nCho8YEoz5', 6)">
+              Håkan Hellström – Det kommer aldrig va över för mig
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('5T8EDUDqKcs6OSOwEsfqG7', 9)">
+              Queen – Don't Stop Me Now
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('5ifJBfmaH05XbEiwWSQLNj', 1)">
+              N.W.A. – Straight Outta Compton
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('1tjHKKI0r82IB5KL29whHs', 6)">
+              Muse – Panic Station
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.getInfo('69kOkLUCkxIZYexIgSG8rq', 1)">
+              Daft Punk – Get Lucky
+            </li>
+          </ul>
+        </div>
+        <div ng-switch-when="1">
+          <!-- <h1 class="controls-headline">Customize your card</h1> -->
+          <h1 class="controls-subline">Background:</h1>
+          <button class="controls-btn" colorpicker="rgba" colorpicker-position="bottom" type="button" ng-model="main.poster.bgTint">
+              Pick color & opacity
+          </button>
+          <h1 class="controls-subline">Lyrics size:</h1>
+          <input
+            id= "sliderS"
+            name="lyric-slider"
+            type="range"
+            ng-model="main.poster.fontSize"
+            min="2"
+            max="6"/>
+
+          <h1 class="controls-subline">Lyrics font:</h1>
+          <select ng-model="main.poster.quoteFontFamily">
+              <option value="Oswald">
+                  Oswald
+              </option>
+              <option value="Courgette">
+                  Courgette
+              </option>
+              <option value="Berkshire Swash">
+                  Berkshire Swash
+              </option>
+              <option value="Montserrat">
+                  Montserrat
+              </option>
+              <option value="Noto Sans">
+                  Noto Sans
+              </option>
+              <option value="Text Me One">
+                  Text Me One
+              </option>
+              <option value="Share Tech Mono">
+                  Share Tech Mono
+              </option>
+          </select>
+          <h1 class="controls-subline">Artist/track font:</h1>
+          <select ng-model="main.poster.artistTitleFontFamily">
+              <option value="Oswald">
+                  Oswald
+              </option>
+              <option value="Courgette">
+                  Courgette
+              </option>
+              <option value="Berkshire Swash">
+                  Berkshire Swash
+              </option>
+              <option value="Montserrat">
+                  Montserrat
+              </option>
+              <option value="Noto Sans">
+                  Noto Sans
+              </option>
+              <option value="Text Me One">
+                  Text Me One
+              </option>
+              <option value="Share Tech Mono">
+                  Share Tech Mono
+              </option>
+          </select>
+          <br><br>
+          <h1 class="controls-subline">Content:</h1>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="main.poster.showArtist"> Show artist name
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="main.poster.showTitle"> Show song title
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="main.poster.showBorder"> Show border
+            </label>
+          </div>
+        </div>
+        <div ng-switch-when="2">
+          <h1 class="controls-headline">Share and save your card:</h1>
+          <ul class="controls-favourites list-inline">
+            <li
+              class="controls-favourite"
+              ng-click="">&nbsp; 
+              <i class="fa fa-facebook-square fa-2x"></i>
+              &nbsp; Share to Facebook&nbsp; 
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="">&nbsp; 
+              <i class="fa fa-dropbox  fa-2x"></i>
+              &nbsp; Save to Dropbox&nbsp; 
+            </li>
+          </ul>
+          
+          <h1 class="controls-headline">Resize as wallpaper:</h1>
+          <ul class="controls-favourites list-inline">
+            
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('desktop')">
+              <i class="fa fa-desktop fa-2x"></i>
+              &nbsp;1920x1080 
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('macbook')">
+              <i class="fa fa-desktop fa-2x"></i>
+              &nbsp;1280x800 
+            </li>
+            </ul>
+            <ul class="controls-favourites list-inline">
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('galaxy6')">
+              <i class="fa fa-android fa-2x"></i>
+              &nbsp; Galaxy 6/6 Edge &nbsp;  
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('galaxy4')">
+              <i class="fa fa-android fa-2x"></i>
+              &nbsp; Galaxy 4/5 &nbsp; 
+            </li>
+          </ul>
+          <ul class="controls-favourites list-inline">
+            <li
+              class="controls-favourite"
+              
+              ng-click="main.generateImg('iphone6p')">
+              <i class="fa fa-apple fa-2x"></i>
+              &nbsp; iPhone 6 Plus &nbsp;  
+
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('iphone6')">
+              <i class="fa fa-apple fa-2x"></i>
+             &nbsp; iPhone 6 &nbsp; 
+            </li>
+            <li
+              class="controls-favourite"
+              ng-click="main.generateImg('iphone5')">
+              <i class="fa fa-apple fa-2x"></i>
+              &nbsp; iPhone 5/5s &nbsp; 
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="quote-controls" ng-if="main.poster.lyrics.length > 1">
+        <button
+          class="controls-btn controls-float"
+          ng-click="main.quotePrev()">
+          <i class="fa fa-angle-left"></i> Previous line
+        </button>
+        <button
+          class="controls-btn controls-float"
+          ng-click="main.quoteNext()">
+          Next line <i class="fa fa-angle-right"></i>
+        </button>
+        <button
+          class="controls-btn controls-float"
+          ng-click="main.changeImage()">
+          <i class="fa fa-refresh"></i> Change image
+        </button>
+      </div>
+    </div>
+    <div class="col-md-8 preview">
+      <ng-include src="'views/templates/quote.html'" class="template-quote"></ng-include>
+    </div>
+  </div>
+  <div class="loader" ng-if="main.isLoading">
+    <div class="loader-spinner">
+      <div></div>
+    </div>
+  </div>
+</div>

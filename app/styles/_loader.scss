@@ -1,0 +1,61 @@
+
+.loader
+{
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: opacity 0.2s;
+  overflow: hidden;
+}
+
+.loader.ng-enter,
+.loader.ng-leave.ng-leave-active
+{
+  opacity: 0;
+}
+
+.loader.ng-leave,
+.loader.ng-enter.ng-enter-active
+{
+  opacity: 1;
+}
+
+.loader-spinner
+{
+  > div
+  {
+    animation-fill-mode: both;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    margin: 100px auto;
+    animation: loader-animation 1s 0s infinite cubic-bezier(0.21, 0.53, 0.56, 0.8);
+  }
+}
+
+
+@keyframes loader-animation
+{
+  0%
+  {
+    transform: scale(0.1);
+    opacity: 1;
+  }
+
+  70%
+  {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  100%
+  {
+    opacity: 0;
+  }
+}
