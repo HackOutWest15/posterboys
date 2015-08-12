@@ -4,22 +4,26 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "components-font-awesome/scss/font-awesome.scss";
 // endbower
 
+@import url(http://fonts.googleapis.com/css?family=Courgette);
+@import url(http://fonts.googleapis.com/css?family=Berkshire%20Swash);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Noto%20Sans);
+@import url(http://fonts.googleapis.com/css?family=Text%20Me%20One);
+@import url(http://fonts.googleapis.com/css?family=Share%20Tech%20Mono);
+
 #sliderS{
   margin-top:20px;
-
 }
-
-
 
 //begin range
 
 input[type=range] {
     /*removes default webkit styles*/
     -webkit-appearance: none;
-    
+
     /*fix for FF unable to apply focus style bug */
     border: 1px solid white;
-    
+
     /*required for proper track sizing in FF*/
     width: 300px;
 }
@@ -70,10 +74,10 @@ input[type=range]:-moz-focusring{
 input[type=range]::-ms-track {
     width: 300px;
     height: 5px;
-    
+
     /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
     background: transparent;
-    
+
     /*leave room for the larger thumb to overflow with a transparent border */
     border-color: transparent;
     border-width: 6px 0;
@@ -147,11 +151,21 @@ body,
   background-color: $primary;
   font-family: 'Montserrat', sans-serif;
   color: #fff;
-}
 
-.controls-headline {
-  font-weight: 400;
-  font-size: 1.25em;
+  button {
+    display: block;
+    margin-top: 15px;
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: 1.4em;
+  }
+
+  h2 {
+    font-size: 1.2em
+    margin-bottom: 15px;
+  }
 }
 
 .controls-subline {

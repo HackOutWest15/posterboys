@@ -7,7 +7,7 @@
           ng-click="main.step = main.STEP_CREATE"
           ng-class="{'walkthrough-btn-active': main.step === main.STEP_CREATE}">
           <span><i class="fa fa-music fa-3x"></i></span>
-          
+
           <p id="iconText">Pick song</p>
         </div>
         <div
@@ -72,20 +72,18 @@
           </ul>
         </div>
         <div ng-switch-when="1">
-          <h1 class="controls-headline">Customize your card</h1>
-          <br>
-          Lyrics size
-          
-          <label for="lyric-slider"></label>
-            <input
-              id= "sliderS"
-              name="lyric-slider"
-              type="range"
-              ng-model="main.poster.fontSize"
-              min="2"
-              max="6"/>
-          <br>
+          <h1>Customize your card</h1>
 
+          <h2>Lyrics size</h2>
+          <input
+            id= "sliderS"
+            name="lyric-slider"
+            type="range"
+            ng-model="main.poster.fontSize"
+            min="2"
+            max="6"/>
+
+          <h2>Content</h2>
           <div class="checkbox">
             <label>
               <input type="checkbox" ng-model="main.poster.showArtist"> Show artist name
@@ -101,8 +99,57 @@
               <input type="checkbox" ng-model="main.poster.showBorder"> Show border
             </label>
           </div>
-          <button class="btn btn-default" colorpicker="rgba" colorpicker-position="bottom" type="button" colorpicker-position="top" ng-model="main.poster.bgTint">
-              Change color & opacity
+          <h2>Lyric font</h2>
+          <select ng-model="main.poster.quoteFontFamily">
+              <option value="Oswald">
+                  Oswald
+              </option>
+              <option value="Courgette">
+                  Courgette
+              </option>
+              <option value="Berkshire Swash">
+                  Berkshire Swash
+              </option>
+              <option value="Montserrat">
+                  Montserrat
+              </option>
+              <option value="Noto Sans">
+                  Noto Sans
+              </option>
+              <option value="Text Me One">
+                  Text Me One
+              </option>
+              <option value="Share Tech Mono">
+                  Share Tech Mono
+              </option>
+          </select>
+          <h2>Artist/title font</h2>
+          <select ng-model="main.poster.artistTitleFontFamily">
+              <option value="Oswald">
+                  Oswald
+              </option>
+              <option value="Courgette">
+                  Courgette
+              </option>
+              <option value="Berkshire Swash">
+                  Berkshire Swash
+              </option>
+              <option value="Montserrat">
+                  Montserrat
+              </option>
+              <option value="Noto Sans">
+                  Noto Sans
+              </option>
+              <option value="Text Me One">
+                  Text Me One
+              </option>
+              <option value="Share Tech Mono">
+                  Share Tech Mono
+              </option>
+          </select>
+          <h2>Background color & opacity</h2>
+          <button class="btn btn-default" colorpicker="rgba" colorpicker-position="bottom" type="button" ng-model="main.poster.bgTint">
+              Pick color & opacity
           </button>
         </div>
         <div ng-switch-when="2">
@@ -115,7 +162,7 @@
               <i class="fa fa-facebook-square fa-2x"></i>
               &nbsp;&nbsp; Share to Facebook
             </li>
-          
+
            <li
               class="controls-favourite shareText"
               ng-click="">
