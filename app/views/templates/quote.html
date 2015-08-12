@@ -5,11 +5,11 @@
   <div class="quote-tint" style="background: {{main.poster.bgTint}};">
     <div class="quote-border" style="{{main.poster.showBorder ? 'border: 3px solid #fff;' : ''}}">
       <div class="quote-content">
-        <h1 class="quote-content-quote" style="font-size: {{main.poster.fontSize}}em">
+        <h1 class="quote-content-quote" style="font-size: {{main.poster.fontSize}}em; font-family: {{main.poster.quoteFontFamily}};">
           "{{ main.poster.lyrics[main.poster.quoteIndex] }}"
         </h1>
         <h2 class="quote-content-name" ng-if="main.poster.showArtist || main.poster.showTitle">
-          <span class="quote-content-name-borders">
+          <span class="quote-content-name-borders" style="font-family: {{main.poster.artistTitleFontFamily}};">
             {{ main.poster.showArtist ? main.poster.artist : '' }}
             <span class="quote-diamond" ng-if="main.poster.showArtist && main.poster.showTitle">
               &diams;

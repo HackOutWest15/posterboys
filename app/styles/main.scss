@@ -4,12 +4,16 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "components-font-awesome/scss/font-awesome.scss";
 // endbower
 
+@import url(http://fonts.googleapis.com/css?family=Courgette);
+@import url(http://fonts.googleapis.com/css?family=Berkshire%20Swash);
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Noto%20Sans);
+@import url(http://fonts.googleapis.com/css?family=Text%20Me%20One);
+@import url(http://fonts.googleapis.com/css?family=Share%20Tech%20Mono);
+
 #sliderS{
   margin-top:20px;
-
 }
-
-
 
 //begin range
 
@@ -147,11 +151,21 @@ body,
   background-color: $primary;
   font-family: 'Montserrat', sans-serif;
   color: #fff;
-}
 
-.controls-headline {
-  font-weight: 400;
-  font-size: 1.25em;
+  button {
+    display: block;
+    margin-top: 15px;
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: 1.4em;
+  }
+
+  h2 {
+    font-size: 1.2em
+    margin-bottom: 15px;
+  }
 }
 
 .controls-subline {

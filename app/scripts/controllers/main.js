@@ -29,6 +29,8 @@ angular.module('posterboyApp')
       showTitle: true,
       showBorder: true,
       fontSize: 4,
+      quoteFontFamily: 'Oswald',
+      artistTitleFontFamily: 'Oswald',
       bgTint: 'rgba(0, 0, 0, 0.65)'
     };
 
@@ -36,7 +38,6 @@ angular.module('posterboyApp')
     ctrl.quoteNext = function () {
       if((ctrl.poster.quoteIndex + 1) < ctrl.poster.lyrics.length) {
         ctrl.poster.quoteIndex = ctrl.poster.quoteIndex + 1;
-        console.log(ctrl.poster.quoteIndex);
       }
     };
 
@@ -91,7 +92,7 @@ angular.module('posterboyApp')
             && response[1].data.message.body.lyrics) {
               ctrl.loadingPoster.lyrics = response[1].data.message.body.lyrics.lyrics_body.match(/[^\r\n]+/g);
             } else {
-              console.log('error'); // TODO: BETTER ERROR HANDLING
+              console.log('error parsing lyric response: ' + response[1]); // TODO: BETTER ERROR HANDLING
             }
 
           ctrl.poster.track = ctrl.loadingPoster.track;
