@@ -107,6 +107,22 @@
         </div>
         <div ng-switch-when="2">
           <h1 class="controls-headline">Save and share your card</h1>
+          <br>
+          <ul class="controls-favourites">
+            <li
+              class="controls-favourite shareText"
+              ng-click="">
+              <i class="fa fa-facebook-square fa-2x"></i>
+              &nbsp;&nbsp; Share to Facebook
+            </li>
+          
+           <li
+              class="controls-favourite shareText"
+              ng-click="">
+              <i class="fa fa-dropbox fa-2x"></i>
+              &nbsp;&nbsp; Share to Dropbox
+            </li>
+      </ul>
         </div>
       </div>
       <div class="quote-controls" ng-if="main.poster.lyrics.length > 1">
