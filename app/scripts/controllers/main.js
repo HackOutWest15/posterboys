@@ -27,6 +27,7 @@ angular.module('posterboyApp')
       artistImageUrl: 'http://uptownmagazine.com/files/2015/01/People-Kanye_West.jpg',
       showArtist: true,
       showTitle: true,
+      showBorder: true,
       fontSize: 4
     };
 

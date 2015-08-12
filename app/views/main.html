@@ -70,12 +70,13 @@
         <div ng-switch-when="1">
           <h1 class="controls-headline">Customize your card</h1>
           <label for="lyric-slider">
+            Lyrics size
             <input
               name="lyric-slider"
               type="range"
               ng-model="main.poster.fontSize"
               min="2"
-              max="6"/> Lyrics size
+              max="6"/>
           </label>
           <div class="checkbox">
             <label>
@@ -85,6 +86,11 @@
           <div class="checkbox">
             <label>
               <input type="checkbox" ng-model="main.poster.showTitle"> Show song title
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="main.poster.showBorder"> Show border
             </label>
           </div>
         </div>
